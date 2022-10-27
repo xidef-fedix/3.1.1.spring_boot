@@ -1,20 +1,20 @@
 package ru.fedko.project.springbootweb.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.fedko.project.springbootweb.dao.UserDao;
 import ru.fedko.project.springbootweb.model.User;
 
-
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-    @Autowired
     private UserDao userDao;
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     @Transactional(readOnly = true)
